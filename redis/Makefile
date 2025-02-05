@@ -1,9 +1,3 @@
-TEST_DIR = test
-
-setup:
-	mkdir -p redis-data
-	chmod 700 redis-data
-	make run
 run:
 	docker compose up -d
 stop:
