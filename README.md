@@ -8,5 +8,8 @@ npm i -g pm2
 pm2 start npm --name "myapp" -- run start
 ```
 ```
+pm2 logs
+```
+```
 pm2 remove myapp
 ```
