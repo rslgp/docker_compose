@@ -13,3 +13,7 @@ pm2 logs
 ```
 pm2 remove myapp
 ```
+```
+pm2 save
+pm2 startup
+```
