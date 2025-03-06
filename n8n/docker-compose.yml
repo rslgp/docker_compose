@@ -5,19 +5,25 @@ services:
     ports:
       - "5678:5678"
     volumes:
-      - ./n8n_data:/home/node/.n8n
+      - n8n_data:/home/node/.n8n
     env_file:
       - .env
     environment:  # Overrides the value in .env
-      - N8N_HOST=localhost
-      - N8N_PORT=5678
-      - N8N_PATH=n8n
+#      - N8N_HOST=localhost
+#      - N8N_PORT=5678
+#      - N8N_PATH=n8n/
       - N8N_PROTOCOL=https
-      - OWN_N8N_URL=<URL>
-      - N8N_URL=https://${OWN_N8N_URL}/n8n
-      - WEBHOOK_URL=https://${OWN_N8N_URL}/n8n/
-      - WEBHOOK_TUNNEL_URL=http://${OWN_N8N_URL}/n8n/
-      - N8N_CUSTOM_WEBHOOK_URL=http://${OWN_N8N_URL}/n8n/webhook_custom/
+      - OWN_N8N_URL=n8n.mapafome.com.br
+      - N8N_URL=https://${OWN_N8N_URL}/
+      - WEBHOOK_URL=https://${OWN_N8N_URL}/
+      - WEBHOOK_TUNNEL_URL=http://${OWN_N8N_URL}/
+#      - N8N_CUSTOM_WEBHOOK_URL=http://${OWN_N8N_URL}/n8n/webhook_custom/
       - NODE_FUNCTION_ALLOW_EXTERNAL=node-fetch
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
 
     restart: unless-stopped
+
+volumes:
+  n8n_data:
+    external: true
