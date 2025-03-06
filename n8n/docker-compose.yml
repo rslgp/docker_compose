@@ -1,0 +1,23 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+    env_file:
+      - .env
+    environment:  # Overrides the value in .env
+      - N8N_HOST=localhost
+      - N8N_PORT=5678
+      - N8N_PATH=n8n
+      - N8N_PROTOCOL=https
+      - OWN_N8N_URL=<URL>
+      - N8N_URL=https://${OWN_N8N_URL}/n8n
+      - WEBHOOK_URL=https://${OWN_N8N_URL}/n8n/
+      - WEBHOOK_TUNNEL_URL=http://${OWN_N8N_URL}/n8n/
+      - N8N_CUSTOM_WEBHOOK_URL=http://${OWN_N8N_URL}/n8n/webhook_custom/
+      - NODE_FUNCTION_ALLOW_EXTERNAL=node-fetch
+
+    restart: unless-stopped
