@@ -9,3 +9,5 @@ delete:
 list_keys_oncontainer:
 	redis-cli KEYS "*"
 	redis-cli DEL KEY
+	redis-cli FLUSHALL
+
