@@ -5,3 +5,7 @@ stop:
 delete:
 	docker stop my_redis
 	docker rm my_redis
+
+list_keys_oncontainer:
+	redis-cli KEYS "*"
+	redis-cli DEL KEY
